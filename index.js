@@ -1,6 +1,27 @@
 let questions_id = [];
 let answers_id = [];
 
+// Function to make the test
+let questions = [];
+let answers1 = [];
+function create_test(){
+    for (i in questions_id){
+        questions.push($("#" + questions_id[i]).val());
+        answers1.push($("#" + answers_id[i]).val());
+    };
+    console.log(questions);
+    $("#input_questions").html("");
+    $("button").hide();
+    let output_html = "";
+    let counter = 0;
+    for (i in questions){
+        counter += 1;
+        output_html += "<p>" + counter.toString() + ": " + questions[i] + "</p>";
+    };
+    $("#test").html(output_html);
+
+};
+
 // Function to handel the creation of new questions
 let questions_counter = 0;
 let questions_html = "";
@@ -12,8 +33,6 @@ function question_load(){
     answers_id.push("answer" + questions_counter.toString());
     questions_counter += 1;
 };
-
-
 
 // Function to update the text areas
 let margin = 30;
