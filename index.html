@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="index.js"></script>
+    <script defer src="index.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test maker</title>
 </head>
@@ -16,10 +16,33 @@
         margin-left: 50pt;
         margin-right: 50pt;
     }
+    .question{
+        padding: 5pt;
+        border: 2pt solid rgb(82, 82, 82);
+        border-radius: 5pt;
+        text-align: center;
+    }
+    textarea{
+        padding: 5pt;
+        border: 1px solid rgb(82, 82, 82);
+        border-radius: 3pt;
+        outline: none;
+        font-size: 15pt;
+    }
+    button{
+        padding: 5pt;
+        border-radius: 3pt;
+        background-color: white;
+        border: 1px solid rgb(82, 82, 82);
+    }
 </style>
 <body>
     <center>
-        <h1></h1>
+        <h1 style="margin-bottom: 50pt;">Test Maker</h1>
+        <div id="input_questions" style="text-align: left; margin-right: 150pt; margin-left: 150pt;">
+        </div>
+        <br>
+        <button>Make Test</button>
     </center>
 </body>
 </html>
