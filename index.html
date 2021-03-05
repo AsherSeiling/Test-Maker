@@ -35,10 +35,18 @@
         background-color: white;
         border: 1px solid rgb(82, 82, 82);
     }
+    input{
+        padding: 5pt;
+        border-radius: 3pt;
+        border: 1px solid rgb(82, 82, 82);
+    }
 </style>
 <body>
     <center>
         <h1 style="margin-bottom: 50pt;">Test Maker</h1>
+        <p>Input the Amount of questions you want to create</p>
+        <input type="number" id="new_quesitons_number">
+        <button style="margin-bottom: 5pt; margin-top: 5pt;" onclick="add_new_questions();">Make new questions</button>
         <div id="input_questions" style="text-align: left; margin-right: 150pt; margin-left: 150pt;">
         </div>
         <br>

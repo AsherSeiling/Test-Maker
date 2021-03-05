@@ -2,6 +2,7 @@ let questions_id = [];
 let answers_id = [];
 
 // Function to make the test
+let leter_answer = [];
 let questions = [];
 let answers1 = [];
 function create_test(){
@@ -15,8 +16,31 @@ function create_test(){
     let output_html = "";
     let counter = 0;
     for (i in questions){
+        let leters = "ABCD";
         counter += 1;
         output_html += "<p>" + counter.toString() + ": " + questions[i] + "</p>";
+        let random = Math.floor((Math.random() * 4) + 0);
+        let correct_anser = leters[random];
+        leter_answer.push(correct_anser);
+        for (x in leters){
+            if (leters[x] == correct_anser){
+                output_html += "<p>" + leters[x] + ". " + answers1[i] + "</p>"
+            }
+            else{
+                random = Math.floor((Math.random() * (questions.length)) + 0);
+                if (answers1[random] == answers1[i]){
+                    random = Math.floor((Math.random() * (questions.length)) + 0);
+                    if (answers1[random] == answers1[i]){
+                        random = Math.floor((Math.random() * (questions.length)) + 0);
+                        if (answers1[random] == answers1[i]){
+                            random = Math.floor((Math.random() * (questions.length)) + 0);
+                        };
+                    };
+                };
+                output_html += "<a>" + leters[x] + ". " + answers1[random] + "</a>"
+            };
+            
+        };
     };
     $("#test").html(output_html);
 
@@ -24,9 +48,9 @@ function create_test(){
 
 // Function to handel the creation of new questions
 let questions_counter = 0;
-let questions_html = "";
 function question_load(){
-    questions_html += "<div id=\"question" + questions_counter.toString() + "\" class=\"question\"><p>Question " + (questions_counter + 1).toString() + "</p><textarea name=\"question" + questions_counter.toString() + " \"id=\"inquestion" + questions_counter.toString() + "\" cols=\"30\" rows=\"1\" placeholder=\"Put Question here\" oninput=\"textarea_update(" + questions_counter.toString() + ");\"></textarea><br><textarea name=\"answer" + questions_counter.toString() + "\"id=\"answer" + questions_counter.toString() + "\" cols=\"30\" rows=\"1\" placeholder=\"Answer to question here\" oninput=\"textarea_updatean(" + questions_counter.toString() + ");\"></textarea><br><br><button onclick=\"question_load(" + questions_counter.toString() + ");\">New Question</button></div><br>"
+    let questions_html = $("#input_questions").html();
+    questions_html += "<div id=\"question" + questions_counter.toString() + "\" class=\"question\"><p>Question " + (questions_counter + 1).toString() + "</p><textarea name=\"question" + questions_counter.toString() + " \"id=\"inquestion" + questions_counter.toString() + "\" cols=\"30\" rows=\"1\" placeholder=\"Put Question here\" oninput=\"textarea_update(" + questions_counter.toString() + ");\"></textarea><br><textarea name=\"answer" + questions_counter.toString() + "\"id=\"answer" + questions_counter.toString() + "\" cols=\"30\" rows=\"1\" placeholder=\"Answer to question here\" oninput=\"textarea_updatean(" + questions_counter.toString() + ");\"></textarea><br><br></div><br>"
     $("#input_questions").html(questions_html);
     window.scrollTo(0,document.body.scrollHeight);
     questions_id.push("inquestion" + questions_counter.toString());
@@ -41,7 +65,7 @@ function textarea_update(id){
     let id1 = questions_id[parseInt(id)];
     let text1 = $("#" + id1).val();
     if (text1.length >= margin){
-        margin += 35;
+        margin += 34;
         rows1 += 1;
     }
     else if(text1.length < margin - 35){
@@ -56,7 +80,7 @@ function textarea_updatean(id){
     let id2 = answers_id[id]; 
     let text1 = $("#" + id2).val();
     if (text1.length >= margin){
-        margin += 35;
+        margin += 34;
         rows1 += 1;
     }
     else if(text1.length < margin - 35){
@@ -65,4 +89,18 @@ function textarea_updatean(id){
     };
     document.getElementById(id2).rows = `${rows1}`;
 };
+
+function add_new_questions(){
+    let number = $("#new_quesitons_number").val();
+    let added = 0;
+    let run = true;
+    while (run == true){
+        added += 1;
+        if(added >= number){
+            run = false;
+        }
+        question_load();
+    };
+};
+
 question_load();
