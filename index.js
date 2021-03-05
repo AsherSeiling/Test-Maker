@@ -24,7 +24,7 @@ function create_test(){
         leter_answer.push(correct_anser);
         for (x in leters){
             if (leters[x] == correct_anser){
-                output_html += "<p>" + leters[x] + ". " + answers1[i] + "</p>"
+                output_html += "<p style=\"margin-left: 15pt;\">" + leters[x] + ". " + answers1[i] + "</p>"
             }
             else{
                 random = Math.floor((Math.random() * (questions.length)) + 0);
@@ -37,7 +37,7 @@ function create_test(){
                         };
                     };
                 };
-                output_html += "<a>" + leters[x] + ". " + answers1[random] + "</a>"
+                output_html += "<p style=\"margin-left: 15pt;\">" + leters[x] + ". " + answers1[random] + "</p>"
             };
             
         };
